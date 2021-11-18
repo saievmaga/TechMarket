@@ -52,7 +52,7 @@ public class ProductController {
         Product existing = productService.getProductByTitle(newProductTitle);
         if(existing != null) {
             model.addAttribute("newProduct", newProduct);
-            model.addAttribute("addProductError", "Product with current title already exists");
+            model.addAttribute("addProductError", "Товар с текущим названием уже существует");
             logger.debug("Product title already exists.");
             return "add-product-form";
         }
@@ -60,7 +60,7 @@ public class ProductController {
         productService.addImage(newProduct, file);
         
         productService.saveProduct(newProduct);
-        model.addAttribute("addProductSuccess", "Product successfully added");
+        model.addAttribute("addProductSuccess", "Продукт успешно добавлен");
         model.addAttribute("newProduct", new Product());
         model.addAttribute("categories", categoryService.getAllCategories());
         logger.info("Successfully added product: " + newProductTitle);
